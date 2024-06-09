@@ -26,11 +26,11 @@ export class ChatComponent implements AfterViewChecked {
   @ViewChild('chatContainer') private chatContainer!: ElementRef;
 
   constructor(private chatService: ChatService) {
-    this.filteredChats = this.chats; // Initialement, tous les chats sont affichés
+    this.filteredChats = this.chats; 
   }
 
   ngAfterViewChecked() {
-    this.scrollToBottom(); // Faire défiler jusqu'au bas après chaque changement de vue
+    this.scrollToBottom(); 
   }
 
   sendMessage(content: string, role: string) {
@@ -50,14 +50,14 @@ export class ChatComponent implements AfterViewChecked {
         response => {
           const chatgptMessage: Message = { role: 'chatgpt', content: response.choices[0].message.content };
           this.currentChat?.messages.push(chatgptMessage);
-          this.scrollToBottom(); // Faire défiler jusqu'au bas après avoir reçu une réponse
+          this.scrollToBottom(); 
         },
         error => {
           console.error('Error:', error);
         }
       );
     }
-    this.scrollToBottom(); // Faire défiler jusqu'au bas après avoir envoyé un message
+    this.scrollToBottom(); 
   }
 
   handleCommand(content: string) {
@@ -74,7 +74,7 @@ export class ChatComponent implements AfterViewChecked {
             const chatgptMessage: Message = { role: 'chatgpt', content: response.choices[0].message.content };
             this.currentChat?.messages.push(chatgptMessage);
             this.speakText(response.choices[0].message.content);
-            this.scrollToBottom(); // Faire défiler jusqu'au bas après avoir reçu une réponse
+            this.scrollToBottom(); 
           },
           error => {
             console.error('Error:', error);
@@ -110,7 +110,7 @@ export class ChatComponent implements AfterViewChecked {
         const imageUrl = response.data[0].url;
         const imageMessage: Message = { role: 'image', content: imageUrl };
         this.currentChat?.messages.push(imageMessage);
-        this.scrollToBottom(); // Faire défiler jusqu'au bas après avoir reçu une image
+        this.scrollToBottom(); 
       },
       error => {
         console.error('Error:', error);
@@ -130,18 +130,18 @@ export class ChatComponent implements AfterViewChecked {
     this.chats.push(chat);
     this.currentChat = chat;
     this.filteredChats = this.chats;
-    this.scrollToBottom(); // Faire défiler jusqu'au bas après avoir créé un nouveau chat
+    this.scrollToBottom(); 
   }
 
   setCurrentChat(chat: Chat) {
     this.currentChat = chat;
-    this.scrollToBottom(); // Faire défiler jusqu'au bas lors de la sélection d'une conversation
+    this.scrollToBottom();
   }
 
   sendDefaultPrompt(title: string, content: string) {
     this.newChat(title);
     this.sendMessage(content, 'user');
-    this.scrollToBottom(); // Faire défiler jusqu'au bas après avoir reçu une réponse
+    this.scrollToBottom(); 
   }
 
   toggleSidebar() {

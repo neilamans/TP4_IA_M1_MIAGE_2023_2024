@@ -11,14 +11,13 @@ const openai = new OpenAI({
 const app = express();
 const port = 3001;
 
-// Utiliser le middleware cors pour toutes les routes
+
 app.use(cors({
     origin: 'http://localhost:4200',
     methods: 'GET,POST,PUT,DELETE,OPTIONS',
     allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept',
 }));
 
-// Middleware pour parser les corps de requêtes JSON et urlencoded
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

@@ -26,8 +26,8 @@
   .sidebar-header {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Aligner les boutons */
-    padding: 10px; /* Espacement cohérent */
+    align-items: center; 
+    padding: 10px; 
   }
   
   .sidebar-header button#new-chat {
@@ -84,7 +84,7 @@
     padding: 20px;
     background-color: #343541;
     width: 100%;
-    height: calc(100vh - 140px); /* Ajuster en fonction de la hauteur de .bottom-section */
+    height: calc(100vh - 140px); 
   }
   
   #output {
@@ -123,13 +123,13 @@
     padding: 20px;
     position: fixed;
     bottom: 0;
-    left: 260px; /* Ajustement pour la sidebar */
-    width: calc(100% - 260px); /* Ajustement pour la sidebar */
+    left: 260px; 
+    width: calc(100% - 260px); 
     display: flex;
     align-items: center;
     justify-content: center;
     transition: width 0.3s ease, left 0.3s ease;
-    height: 80px; /* Définir une hauteur spécifique pour la bande inférieure */
+    height: 80px; 
   }
   
   .main.full-width .bottom-section {
