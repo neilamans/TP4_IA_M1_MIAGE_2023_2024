@@ -279,4 +279,16 @@
   .prompt-card p {
     font-size: 18px;
   }
+  .volume-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 5px;
+  }
+  
+  .volume-button:hover {
+    color: #4CAF50;
+  }
   

@@ -169,7 +169,7 @@ export class ChatComponent implements AfterViewChecked {
     }
   }
 
-  private speakText(text: string) {
+  speakText(text: string) {
     const utterance = new SpeechSynthesisUtterance(text);
     window.speechSynthesis.speak(utterance);
   }
