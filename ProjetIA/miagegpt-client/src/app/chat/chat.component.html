@@ -1,0 +1,66 @@
+<div class="chat-container">
+    <div class="side-bar" [class.hidden]="isSidebarHidden">
+        <div class="sidebar-header">
+            <button id="new-chat" (click)="promptNewChat()">+</button>
+        </div>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Search..." (input)="filterChats($event)">
+        </div>
+        <div class="history">
+            <div *ngFor="let chat of filteredChats">
+                <p (click)="setCurrentChat(chat)">{{ chat.title }}</p>
+                <button class="delete-button" (click)="deleteChat(chat)">🗑️</button>
+            </div>
+        </div>
+        <nav>
+            <p>Made by Neila & Jeff</p>
+        </nav>
+    </div>
+    <div class="main" [class.full-width]="isSidebarHidden">
+        <header>
+            <h1>Neila & Jeff's GPT</h1>
+        </header>
+        <button class="toggle-sidebar" (click)="toggleSidebar()">☰</button>
+        <div id="chat-container" #chatContainer>
+            <div id="output">
+                <div *ngIf="(currentChat?.messages ?? []).length === 0" class="default-prompts">
+                    <div class="prompt-card"
+                        (click)="sendDefaultPrompt('Informations MIAGE Nice', 'donne moi des informations sur la MIAGE de Nice')">
+                        <i class="fas fa-university"></i>
+                        <p>Informations MIAGE Nice</p>
+                    </div>
+                    <div class="prompt-card"
+                        (click)="sendDefaultPrompt('Découverte de Sophia-antipolis', 'donne moi des informations sur Sophia-antipolis et les endroits à visiter')">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Découverte de Sophia-antipolis</p>
+                    </div>
+                    <div class="prompt-card"
+                        (click)="sendDefaultPrompt('Informations sur Nice', 'donne moi des informations sur la ville de Nice et les endroits à visiter')">
+                        <i class="fas fa-city"></i>
+                        <p>Informations sur Nice</p>
+                    </div>
+                </div>
+                <div *ngFor="let message of currentChat?.messages" [ngClass]="{
+            'message': true,
+            'user-message': message.role === 'user',
+            'chatgpt-message': message.role === 'chatgpt',
+            'image-message': message.role === 'image'
+          }">
+                    <ng-container *ngIf="message.role === 'image'; else textMessage">
+                        <img [src]="message.content" alt="Generated Image" />
+                    </ng-container>
+                    <ng-template #textMessage>{{ message.content }}</ng-template>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-section">
+            <div class="input-container">
+                <input #messageInput type="text" placeholder="Type your message here..."
+                    (keydown.enter)="onEnter(messageInput)">
+                <button id="submit" (click)="sendMessage(messageInput.value, 'user'); messageInput.value=''">➢</button>
+                <button id="generate-image"
+                    (click)="generateImage(messageInput.value); messageInput.value=''">🎨</button>
+            </div>
+        </div>
+    </div>
+</div>
