@@ -2,6 +2,11 @@
 
 Lien du projet sur github [ici](https://github.com/neilamans/TP4_IA_M1_MIAGE_2023_2024)
 
+Membres du groupe: 
+- Mahussi Jeff Datongnon
+- Mansouri Neila Camélia
+- Allaye Bocoum
+  
 ## Bienvenue dans MiageGPT!
 Dans notre chatGPT-like, vous trouverez les fonctionnalités suivantes:
 - [x] La possibilité d'échanger par chat (question-réponse) avec l'IA
